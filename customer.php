@@ -1,3 +1,6 @@
+<?php
+  include('koneksi.php');
+?>
 
 <!DOCTYPE html>
 <html>
@@ -65,10 +68,35 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="./index.php" class="nav-link active">
+            <a href="./index.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">Data Master</li>
+          <li class="nav-item">
+            <a href="./customer.php" class="nav-link active">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Customer
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="./customer.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Pegawai
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="./customer.php" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Barang
               </p>
             </a>
           </li>
@@ -86,12 +114,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark">Kelola Data Customer</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item active">Customer</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -99,76 +127,47 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
-
-                <p>New Orders</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Bounce Rate</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>User Registrations</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-                <p>Unique Visitors</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
+  <!-- MAIN MENU -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2">
+          <a href="#" class="btn btn-primary">Tambah Data</a>
         </div>
-
-        <!-- ISI KONTEN DASHBAORD -->
-
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+        <div class="col-12">
+          <table id="example1" class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Alamat</th>
+              <th>Telp.</th>
+              <th>Opsi</th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php
+            $no=1;
+            $data = mysqli_query($koneksi,"SELECT * FROM tb_pelanggan");
+            while($d=mysqli_fetch_array($data)){
+              ?>
+              <tr>
+                <td><?php echo $no++;?></td>
+                <td><?php echo $d['NAMA_CUST']; ?></td>
+                <td><?php echo $d['ALAMAT_CUST']; ?></td>
+                <td><?php echo $d['TELP_CUST']; ?></td>
+                <td><a href="#" class="btn btn-warning">Edit</a> <a href="#" class="btn btn-danger">Hapus</a></td>
+              </tr>
+              <?php
+            }
+          ?>
+          </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+  </section>
+  
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">

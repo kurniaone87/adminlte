@@ -23,10 +23,6 @@
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  
-  <!-- Data Tables -->
-  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
@@ -72,6 +68,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="./customer.php" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Customer
+              </p>
+            </a>
+          </li>  
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -227,22 +231,5 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
 </body>
 </html>
